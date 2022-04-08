@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            Kullanıcı TCKN <h:inputText value="#{usersBean.entity.user_tckn}"/><br/>
+            Kullanıcı Adı <h:inputText value="#{usersBean.entity.user_name}"/><br/>
+            Kullanıcı Numara <h:inputText value="#{usersBean.entity.user_phone_number}"/><br/>
+            Kullanıcı Adres <h:inputText value="#{usersBean.entity.user_address}"/><br/>
+            Kullanıcı Email <h:inputText value="#{usersBean.entity.user_email}"/><br/>
+            Kullanıcı Cinsiyet <h:inputText value="#{usersBean.entity.user_gender}"/><br/>
+            Kullanıcı Takma Ad <h:inputText value="#{usersBean.entity.user_username}"/><br/>
+            Kullanıcı Kullanıcı Şifre <h:inputText value="#{usersBean.entity.user_password}"/><br/>
+            <h:commandButton action="#{usersBean.create}" value="Kaydet"/>
+
+        </h:form>
+        <br/>
+        <h:form>
+            <h:dataTable value="#{usersBean.list}" var="u">
+                <h:column>
+                    <f:facet name="header">TCKN</f:facet>
+                        #{u.user_tckn}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                        #{u.user_name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Telefon Numarası</f:facet>
+                        #{u.user_phone_number}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">address</f:facet>
+                        #{u.user_address}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">email</f:facet>
+                        #{u.user_email}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">gender</f:facet>
+                        #{u.user_gender}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">username</f:facet>
+                        #{u.user_username}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">password</f:facet>
+                        #{u.user_password}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Delete</f:facet>
+                    <h:commandButton action="#{usersBean.delete(u)}" value="Sil"/>
+                </h:column>
+                    
+                <h:column>
+                   <f:facet name="header">Update</f:facet>
+                    <h:commandButton action="#{usersBean.update(y)}" value="Güncelle"/>
+                </h:column>
+                   
+
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
