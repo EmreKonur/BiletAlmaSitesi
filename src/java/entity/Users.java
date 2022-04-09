@@ -9,8 +9,7 @@ package entity;
  * @author berat
  */
 public class Users {
-    private String user_tckn;
-    private String user_name,user_phone_number,user_address,user_email,user_gender,user_username,user_password;
+    private String user_tckn,user_name,user_phone_number,user_address,user_email,user_gender,user_username,user_password;
 
     public Users() {
     }
@@ -45,6 +44,7 @@ public class Users {
     public String getUser_phone_number() {
         return user_phone_number;
     }
+    
 
     public void setUser_phone_number(String user_phone_number) {
         this.user_phone_number = user_phone_number;
@@ -94,6 +94,4 @@ public class Users {
     public String toString() {
         return "Users{" + "user_tckn=" + user_tckn + ", user_name=" + user_name + ", user_phone_number=" + user_phone_number + ", user_address=" + user_address + ", user_email=" + user_email + ", user_gender=" + user_gender + ", user_username=" + user_username + ", user_password=" + user_password + '}';
     }
-    
-    
 }
