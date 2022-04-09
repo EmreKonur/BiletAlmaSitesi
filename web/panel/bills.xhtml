@@ -8,6 +8,10 @@
     </h:head>
     <h:body>
         <h:form>
+            <h:commandButton action="/index" value="Home" />
+        </h:form>
+        <hr/>          
+        <h:form>
             <h:outputText rendered="#{billsBean.entity.bills_id==NULL}" value="Bills ID" />
             <h:inputText rendered="#{billsBean.entity.bills_id==NULL}" value="#{billsBean.entity.bills_id}"/><br/>
             <h:outputText rendered="#{billsBean.entity.bills_id!=NULL}" value="Bills Date" /> 
