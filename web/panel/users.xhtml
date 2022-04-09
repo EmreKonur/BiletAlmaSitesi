@@ -8,6 +8,10 @@
     </h:head>
     <h:body>
         <h:form>
+            <h:commandButton action="/index" value="Home" />
+        </h:form>
+        <hr/>          
+        <h:form>
             <h:outputText rendered="#{usersBean.entity.user_tckn==NULL}" value="Kullanıcı TCKN" />
             <h:inputText rendered="#{usersBean.entity.user_tckn==NULL}" value="#{usersBean.entity.user_tckn}"/><br/>
             <h:outputText rendered="#{usersBean.entity.user_tckn!=NULL}" value="Kullanıcı TCKN" /> 
