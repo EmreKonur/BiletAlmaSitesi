@@ -12,7 +12,11 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/berat/Documents/NetBeansProjects/BiletAlmaSitesi/src/java/util/DBConnection.java</file>
+            <file>file:/C:/Users/emrek/OneDrive/Belgeler/GitHub/BiletAlmaSitesi/src/java/controller/CompanyBean.java</file>
+            <file>file:/C:/Users/emrek/OneDrive/Belgeler/GitHub/BiletAlmaSitesi/web/index.xhtml</file>
+            <file>file:/C:/Users/emrek/OneDrive/Belgeler/GitHub/BiletAlmaSitesi/web/panel/users.xhtml</file>
+            <file>file:/C:/Users/emrek/OneDrive/Belgeler/GitHub/BiletAlmaSitesi/web/panel/company.xhtml</file>
+            <file>file:/C:/Users/emrek/OneDrive/Belgeler/GitHub/BiletAlmaSitesi/src/java/dao/CompanyDAO.java</file>
         </group>
     </open-files>
 </project-private>

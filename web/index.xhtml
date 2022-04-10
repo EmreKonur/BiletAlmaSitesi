@@ -2,15 +2,42 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Facelet Title</title>
+        <STYLE TYPE="TEXT/CSS">
+        
+        body 
+        {
+            font:17px "Trebuchet MS", Arial, Helvetica, sans-serif;/*Yazı Tipleri*/
+            background:#EEE;/*Sayfa Background*/
+        }
+ 
+        
+        </STYLE>
     </h:head>
     <h:body>
         <h:form>
-            <h:commandButton action="/panel/users" value="users"/>
-            <h:commandButton action="/panel/bills" value="bills"/>
+            <br>
+            <h:commandButton action="/panel/users" value="Users"/>
+            <h:commandButton action="/panel/bills" value="Bills"/>
+            <h:commandButton action="/panel/company" value="Company"/> 
+            </br>
+           
+            <br>
+            <h:commandButton action="/panel/TravelRoute/bustravelroute" value="BusRoute"/>
+            <h:commandButton action="/panel/TravelRoute/traintravelroute" value="TrainRoute"/>
+            <h:commandButton action="/panel/TravelRoute/planetravelroute" value="PlaneRoute"/>
+            </br>
+            
+            <br>
+            <h:commandButton action="/panel/Seats/busseats" value="BusSeat"/>
+            <h:commandButton action="/panel/Seats/trainseats" value="TrainSeat"/>
+            <h:commandButton action="/panel/Seats/planeseats" value="PlaneSeat"/>
+            </br>
         </h:form>
     </h:body>
+   
 </html>
 
