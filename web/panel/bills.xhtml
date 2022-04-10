@@ -4,18 +4,57 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Users</title>
+        <title>Bills</title>
+        <STYLE TYPE="TEXT/CSS">
+        *{
+            margin:0;
+            padding:0;
+        }
+ 
+        body 
+        {
+            font:13px "Trebuchet MS", Arial, Helvetica, sans-serif;
+            background:#EEE;
+        }
+ 
+        table 
+        {
+            width:600px;
+            margin:200px auto;
+            table-layout:fixed;
+            border-collapse:collapse;
+        }
+ 
+        tr:nth-child(odd) 
+        {
+            background:#DDD;
+        }
+ 
+        td, th 
+        {
+            padding:8px;
+        }
+ 
+        th 
+        {
+            background:#FFE87C;
+        }
+        </STYLE>
     </h:head>
     <h:body>
+        <h:form>
+            <h:commandButton action="/index" value="Home" />
+        </h:form>
+        <hr/>          
         <h:form>
             <h:outputText rendered="#{billsBean.entity.bills_id==NULL}" value="Bills ID" />
             <h:inputText rendered="#{billsBean.entity.bills_id==NULL}" value="#{billsBean.entity.bills_id}"/><br/>
             <h:outputText rendered="#{billsBean.entity.bills_id!=NULL}" value="Bills Date" /> 
-            <h:inputText readonly="True" rendered="#{billsBean.entity.bills_id!=NULL}"  value="#{billsBean.entity.bills_id}"/><br/>
+            <h:inputText readonly="True" rendered="#{billsBean.entity.bills_id!=NULL}"  value="#{billsBean.entity.bills_id}"/>
             Bills Date <h:inputText value="#{billsBean.entity.bills_date}"/><br/>
-            <h:commandButton rendered="#{billsBean.entity.bills_id==NULL}" action="#{billsBean.create}" value="Kaydet"/>
-            <h:commandButton rendered="#{billsBean.entity.bills_id!=NULL}" action="#{billsBean.update}" value="Güncelle"/>
-            <h:commandButton rendered="#{billsBean.entity.bills_id!=NULL}" action="#{billsBean.clear}" value="Formu Temizle"/>
+            <h:commandButton rendered="#{billsBean.entity.bills_id==NULL}" action="#{billsBean.create}" value="Create"/>
+            <h:commandButton rendered="#{billsBean.entity.bills_id!=NULL}" action="#{billsBean.update}" value="Update"/>
+            <h:commandButton rendered="#{billsBean.entity.bills_id!=NULL}" action="#{billsBean.clear}" value="Clear Form"/>
         </h:form>
         <br/>
         <h:form>

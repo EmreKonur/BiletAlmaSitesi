@@ -5,58 +5,105 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Users</title>
-    </h:head>
-    <h:body>
+        <STYLE TYPE="TEXT/CSS">
+        *{/*Yazıların ve tabloların internet sayfasının üstünden ve yanklarından olan uzaklığı
+            padding etrafında boşluk
+            margin yanındaki nesneler ile arasında boşluk
+           */
+            margin:0;
+            padding:0;
+        }
+ 
+        body 
+        {
+            font:13px "Trebuchet MS", Arial, Helvetica, sans-serif;/*Yazı Tipleri*/
+            background:#EEE;/*Sayfa Background*/
+        }
+ 
+        table 
+        {
+            
+            width:600px;
+            margin:200px auto;/*Tablo ortada veya sol köşeye yapışık olabilir*/
+            table-layout:fixed;
+            border-collapse:collapse;/*Tablo içindeki çizgiler*/
+        }
+        
+        /*Table içindeki arka plan*/
+        tr:nth-child(odd) 
+        {
+            background:#DDD;
+        }
+        /*Table içindeki alt ve üst satır arası boşluk*/
+        td, th 
+        {
+            border: px solid grey;/*Tablo kenarındaki çizgiler*/
+            padding:8px;
+        }
+        /*Table Üstündeki mavi renk*/
+        th 
+        {
+            background:#0DD;
+        }
+        </STYLE>
+        </h:head>
+        <h:body>
         <h:form>
-            <h:outputText rendered="#{usersBean.entity.user_tckn==NULL}" value="Kullanıcı TCKN" />
+            <h:commandButton action="/index" value="Home" />
+        </h:form>
+        <hr/>          
+        <h:form>
+            
+            
+            <h:outputText rendered="#{usersBean.entity.user_tckn==NULL}" value="User TCKN" />
             <h:inputText rendered="#{usersBean.entity.user_tckn==NULL}" value="#{usersBean.entity.user_tckn}"/><br/>
-            <h:outputText rendered="#{usersBean.entity.user_tckn!=NULL}" value="Kullanıcı TCKN" /> 
-            <h:inputText readonly="True" rendered="#{usersBean.entity.user_tckn!=NULL}"  value="#{usersBean.entity.user_tckn}"/><br/>
-            Kullanıcı Adı <h:inputText value="#{usersBean.entity.user_name}"/><br/>
-            Kullanıcı Numara <h:inputText value="#{usersBean.entity.user_phone_number}"/><br/>
-            Kullanıcı Adres <h:inputText value="#{usersBean.entity.user_address}"/><br/>
-            Kullanıcı Email <h:inputText value="#{usersBean.entity.user_email}"/><br/>
-            Kullanıcı Cinsiyet <h:inputText maxlength="1" value="#{usersBean.entity.user_gender}"/><br/>
-            Kullanıcı takma ad <h:inputText value="#{usersBean.entity.user_username}"/><br/>
-            Kullanıcı kullanıcı şifre <h:inputSecret value="#{usersBean.entity.user_password}"/><br/>
+            <h:outputText rendered="#{usersBean.entity.user_tckn!=NULL}" value="User TCKN" /> 
+            <h:inputText readonly="True" rendered="#{usersBean.entity.user_tckn!=NULL}"  value="#{usersBean.entity.user_tckn}"/>
+            User Name             <h:inputText value="#{usersBean.entity.user_name}"/><br/>
+            User Number          <h:inputText value="#{usersBean.entity.user_phone_number}"/><br/>
+            User Address           <h:inputText value="#{usersBean.entity.user_address}"/><br/>
+            User E-mail           <h:inputText value="#{usersBean.entity.user_email}"/><br/>
+            User Gender        <h:inputText maxlength="1" value="#{usersBean.entity.user_gender}"/><br/>
+            User Nick Name       <h:inputText value="#{usersBean.entity.user_username}"/><br/>
+            User Password <h:inputSecret value="#{usersBean.entity.user_password}"/><br/>
             #{userBean.entity.user_tckn}
-            <h:commandButton rendered="#{usersBean.entity.user_tckn==NULL}" action="#{usersBean.create}" value="Kaydet" />
+            <h:commandButton rendered="#{usersBean.entity.user_tckn==NULL}" action="#{usersBean.create}" value="Create" />
             <h:commandButton rendered="#{usersBean.entity.user_tckn!=NULL}" action="#{usersBean.update}" value="Update" />
-            <h:commandButton rendered="#{usersBean.entity.user_tckn!=NULL}" action="#{usersBean.clear}" value="Formu Temizle" />
+            <h:commandButton rendered="#{usersBean.entity.user_tckn!=NULL}" action="#{usersBean.clear}" value="Clear Form" />
         </h:form>
         <br/>
         <h:form>
             <h:dataTable value="#{usersBean.list}" var="u">
                 <h:column>
-                    <f:facet name="header">TCKN</f:facet>
+                    <f:facet name="header">User TCKN</f:facet>
                         #{u.user_tckn}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">Name</f:facet>
+                    <f:facet name="header">User Name</f:facet>
                         #{u.user_name}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">Telefon Numarası</f:facet>
+                    <f:facet name="header">User Number</f:facet>
                         #{u.user_phone_number}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">address</f:facet>
+                    <f:facet name="header">User Address</f:facet>
                         #{u.user_address}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">email</f:facet>
+                    <f:facet name="header">User E-mail</f:facet>
                         #{u.user_email}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">gender</f:facet>
+                    <f:facet name="header">User Gender</f:facet>
                         #{u.user_gender}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">username</f:facet>
+                    <f:facet name="header">User Nick Name</f:facet>
                         #{u.user_username}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">password</f:facet>
+                    <f:facet name="header">User Password</f:facet>
                         #{u.user_password}
                 </h:column>
                 <h:column>
