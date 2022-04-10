@@ -13,7 +13,7 @@ public abstract class DBConnection {
     public Connection connect() throws SQLException, ClassNotFoundException {
         Connection c = null;
         Class.forName("org.postgresql.Driver");
-        c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/root1", "postgres", "qwer5868");
+        c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/BiletAlmaSitesi", "postgres", "12345");
         return c;
     }
     

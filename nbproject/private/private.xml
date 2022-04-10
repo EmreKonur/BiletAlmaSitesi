@@ -12,7 +12,22 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/berat/Documents/NetBeansProjects/BiletAlmaSitesi1/web/panel/users.xhtml</file>
+            <file>file:/C:/Users/oguzh/Desktop/BiletAlmaSitesi/web/panel/TravelRoute/bustravelroute.xhtml</file>
+            <file>file:/C:/Users/oguzh/Desktop/BiletAlmaSitesi/src/java/controller/BusBean.java</file>
+            <file>file:/C:/Users/oguzh/Desktop/BiletAlmaSitesi/src/java/controller/UsersBean.java</file>
+            <file>file:/C:/Users/oguzh/Desktop/BiletAlmaSitesi/web/index.xhtml</file>
+            <file>file:/C:/Users/oguzh/Desktop/BiletAlmaSitesi/src/java/dao/BusDAO.java</file>
+            <file>file:/C:/Users/oguzh/Desktop/BiletAlmaSitesi/src/java/entity/Bus.java</file>
+            <file>file:/C:/Users/oguzh/Desktop/BiletAlmaSitesi/web/panel/bus.xhtml</file>
+            <file>file:/C:/Users/oguzh/Desktop/BiletAlmaSitesi/web/panel/Seats/busseats.xhtml</file>
+            <file>file:/C:/Users/oguzh/Desktop/BiletAlmaSitesi/web/panel/bills.xhtml</file>
+            <file>file:/C:/Users/oguzh/Desktop/BiletAlmaSitesi/web/panel/Seats/trainseats.xhtml</file>
+            <file>file:/C:/Users/oguzh/Desktop/BiletAlmaSitesi/web/panel/TravelRoute/planetravelroute.xhtml</file>
+            <file>file:/C:/Users/oguzh/Desktop/BiletAlmaSitesi/web/panel/users.xhtml</file>
+            <file>file:/C:/Users/oguzh/Desktop/BiletAlmaSitesi/web/panel/TravelRoute/traintravelroute.xhtml</file>
+            <file>file:/C:/Users/oguzh/Desktop/BiletAlmaSitesi/src/java/dao/UsersDAO.java</file>
+            <file>file:/C:/Users/oguzh/Desktop/BiletAlmaSitesi/src/java/entity/Users.java</file>
+            <file>file:/C:/Users/oguzh/Desktop/BiletAlmaSitesi/src/java/dao/BillsDAO.java</file>
         </group>
     </open-files>
 </project-private>

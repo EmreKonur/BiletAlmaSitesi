@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      <h:head>
+        <title>TrainTravelRoute</title>
+      </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton action="/index" value="Home" />
+        </h:form>
+        <hr/>        
+        <h:form>
+            <h:outputText rendered="#{traintravelrouteBean.entity.travel_route_id==NULL}" value="Train Travel Route ID" />
+            <h:inputText rendered="#{traintravelrouteBean.entity.travel_route_id==NULL}" value="#{traintravelrouteBean.entity.travel_route_id}"/><br/>
+            <h:outputText rendered="#{traintravelrouteBean.entity.travel_route_id!=NULL}" value="Train Travel Route ID" /> 
+            <h:inputText readonly="True" rendered="#{traintravelrouteBean.entity.travel_route_id!=NULL}" value="#{traintravelrouteBean.entity.travel_route_id}"/><br/>
+            
+            
+            <h:outputText value="Train Travel Route To" />
+            <h:inputText value="#{traintravelrouteBean.entity.to}"/><br/>
+            
+            
+            <h:outputText value="Train Travel Route From" />
+            <h:inputText value="#{traintravelrouteBean.entity.from}"/> <br/>
+            <h:commandButton rendered="#{traintravelrouteBean.entity.travel_route_id==NULL}" action="#{traintravelrouteBean.create}" value="Kaydet"/>
+            <h:commandButton rendered="#{traintravelrouteBean.entity.travel_route_id!=NULL}" action="#{traintravelrouteBean.update}" value="Güncelle"/>
+            <h:commandButton rendered="#{traintravelrouteBean.entity.travel_route_id!=NULL}" action="#{traintravelrouteBean.clear}" value="Formu Temizle"/>
+        </h:form>
+        <br/>
+        <h:form>
+            <h:dataTable border="1" value="#{traintravelrouteBean.list}" var="u">
+                <h:column>
+                    <f:facet name="header">Train Travel Route ID</f:facet>
+                        #{u.travel_route_id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Train Travel Route TO</f:facet>
+                        #{u.to}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Train Travel Route FROM</f:facet>
+                        #{u.from}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Admin</f:facet>
+                    <h:commandButton action="#{traintravelrouteBean.delete(u)}" value="Delete"/>
+                    <h:commandButton action="#{traintravelrouteBean.setEntity(u)}" value="Update"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

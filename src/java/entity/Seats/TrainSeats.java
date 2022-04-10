@@ -34,8 +34,8 @@ public class TrainSeats {
         return available_seat;
     }
 
-    public void setAvailable_seat(String available_seats) {
-        this.available_seat = available_seats;
+    public void setAvailable_seat(String available_seat) {
+        this.available_seat = available_seat;
     }
 
     public String getNumber_of_seats() {

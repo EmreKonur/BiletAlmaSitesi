@@ -4,9 +4,13 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Bills</title>
+        <title>Users</title>
     </h:head>
     <h:body>
+        <h:form>
+            <h:commandButton action="/index" value="Home" />
+        </h:form>
+        <hr/>          
         <h:form>
             <h:outputText rendered="#{billsBean.entity.bills_id==NULL}" value="Bills ID" />
             <h:inputText rendered="#{billsBean.entity.bills_id==NULL}" value="#{billsBean.entity.bills_id}"/><br/>
@@ -19,7 +23,7 @@
         </h:form>
         <br/>
         <h:form>
-            <h:dataTable value="#{billsBean.list}" var="u" border="1">
+            <h:dataTable value="#{billsBean.list}" var="u">
                 <h:column>
                     <f:facet name="header">Bills ID</f:facet>
                         #{u.bills_id}

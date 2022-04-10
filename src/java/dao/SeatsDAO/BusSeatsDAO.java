@@ -45,7 +45,7 @@ public class BusSeatsDAO extends DBConnection{
         String query = "Select * from busseats";
         ResultSet rs = st.executeQuery(query);
         while (rs.next()) {
-            busSeatsList.add(new BusSeats(rs.getString("seat_id"),rs.getString("available_seat"),rs.getString("number_of_seats")));
+            busSeatsList.add(new BusSeats(rs.getString("seat_id"), rs.getString("available_seat"),rs.getString("number_of_seats")));
         }
 
         return busSeatsList;

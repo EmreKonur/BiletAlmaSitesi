@@ -8,6 +8,10 @@
       </h:head>
     <h:body>
         <h:form>
+            <h:commandButton action="/index" value="Home" />
+        </h:form>
+        <hr/>        
+        <h:form>
             <h:outputText rendered="#{planeseatsBean.entity.seat_id==NULL}" value="Plane Seat ID" />
             <h:inputText rendered="#{planeseatsBean.entity.seat_id==NULL}" value="#{planeseatsBean.entity.seat_id}"/><br/>
             <h:outputText rendered="#{planeseatsBean.entity.seat_id!=NULL}" value="Plane Seat ID" /> 
@@ -20,7 +24,7 @@
         </h:form>
         <br/>
         <h:form>
-            <h:dataTable value="#{planeseatsBean.list}" var="u" border="1">
+            <h:dataTable border="1" value="#{planeseatsBean.list}" var="u">
                 <h:column>
                     <f:facet name="header">Train Seat ID</f:facet>
                         #{u.seat_id}
