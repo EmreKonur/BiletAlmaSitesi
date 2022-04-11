@@ -6,13 +6,6 @@
       <h:head>
         <title>TrainSeats</title>
         <STYLE TYPE="TEXT/CSS">
-            .tadiwa{
-                background-image: url(resources/images/images.jpg);
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-            }
-            
         *{
             margin:0;
             padding:0;
@@ -48,10 +41,11 @@
             background:#5EFB6E;
         }
         </STYLE>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
       </h:head>
-    <h:body styleClass="tadiwa">
+    <h:body>
         <h:form>
-            <h:commandButton action="/index" value="Home" />
+            <h:commandButton styleClass="btn btn-light" action="/index" value="Home" />
         </h:form>
         <hr/>          
         <h:form>
@@ -61,9 +55,9 @@
             <h:inputText readonly="True" rendered="#{trainseatsBean.entity.seat_id!=NULL}" value="#{trainseatsBean.entity.seat_id}"/>
             Train Seats AVAILABLE SEAT <h:inputText value="#{trainseatsBean.entity.available_seat}"/><br/>
             Train Seats NUMBER OF SEATS <h:inputText value="#{trainseatsBean.entity.number_of_seats}"/><br/>
-            <h:commandButton rendered="#{trainseatsBean.entity.seat_id==NULL}" action="#{trainseatsBean.create}" value="Create"/>
-            <h:commandButton rendered="#{trainseatsBean.entity.seat_id!=NULL}" action="#{trainseatsBean.update}" value="Update"/>
-            <h:commandButton rendered="#{trainseatsBean.entity.seat_id!=NULL}" action="#{trainseatsBean.clear}" value="Clear Form"/>
+            <h:commandButton styleClass="btn btn-light" rendered="#{trainseatsBean.entity.seat_id==NULL}" action="#{trainseatsBean.create}" value="Create"/>
+            <h:commandButton styleClass="btn btn-light" rendered="#{trainseatsBean.entity.seat_id!=NULL}" action="#{trainseatsBean.update}" value="Update"/>
+            <h:commandButton styleClass="btn btn-light" rendered="#{trainseatsBean.entity.seat_id!=NULL}" action="#{trainseatsBean.clear}" value="Clear Form"/>
         </h:form>
         <br/>
         <h:form>
@@ -82,8 +76,8 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Admin</f:facet>
-                    <h:commandButton action="#{trainseatsBean.delete(u)}" value="Delete"/>
-                    <h:commandButton action="#{trainseatsBean.setEntity(u)}" value="Update"/>
+                    <h:commandButton styleClass="btn btn-light" action="#{trainseatsBean.delete(u)}" value="Delete"/>
+                    <h:commandButton styleClass="btn btn-light" action="#{trainseatsBean.setEntity(u)}" value="Update"/>
                 </h:column>
             </h:dataTable>
         </h:form>
