@@ -15,6 +15,26 @@ import java.util.List;
 
 public class CompanyDAO extends DBConnection{
     private Connection db;
+    
+    public Company findByID(String company_id){
+        Company u=null;
+        try{
+            Statement st = this.connect().createStatement();
+            
+            String query = "select * from company where company_id="+company_id ;
+            
+            ResultSet rs = st.executeQuery(query);
+            
+            while(rs.next()) {
+                u = new Company(rs.getString("company_id"),rs.getString("company_name"),rs.getString("company_address"),rs.getString("company_phone_number"),rs.getString("company_email"));
+                
+            }
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return u;
+    }
+    
 
     public void createCompany(Company u) throws SQLException, ClassNotFoundException {
         Statement st = this.connect().createStatement();
@@ -61,6 +81,10 @@ public class CompanyDAO extends DBConnection{
     public void setDb(Connection db) {
         this.db = db;
     }
+
+    
+
+    
 
     
 }

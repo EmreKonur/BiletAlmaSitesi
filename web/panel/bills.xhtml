@@ -40,10 +40,11 @@
             background:#FFE87C;
         }
         </STYLE>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
     </h:head>
     <h:body>
         <h:form>
-            <h:commandButton action="/index" value="Home" />
+            <h:commandButton styleClass="btn btn-light"  action="/index" value="Home" />
         </h:form>
         <hr/>          
         <h:form>
@@ -52,9 +53,9 @@
             <h:outputText rendered="#{billsBean.entity.bills_id!=NULL}" value="Bills Date" /> 
             <h:inputText readonly="True" rendered="#{billsBean.entity.bills_id!=NULL}"  value="#{billsBean.entity.bills_id}"/>
             Bills Date <h:inputText value="#{billsBean.entity.bills_date}"/><br/>
-            <h:commandButton rendered="#{billsBean.entity.bills_id==NULL}" action="#{billsBean.create}" value="Create"/>
-            <h:commandButton rendered="#{billsBean.entity.bills_id!=NULL}" action="#{billsBean.update}" value="Update"/>
-            <h:commandButton rendered="#{billsBean.entity.bills_id!=NULL}" action="#{billsBean.clear}" value="Clear Form"/>
+            <h:commandButton styleClass="btn btn-light"  rendered="#{billsBean.entity.bills_id==NULL}" action="#{billsBean.create}" value="Create"/>
+            <h:commandButton styleClass="btn btn-light"  rendered="#{billsBean.entity.bills_id!=NULL}" action="#{billsBean.update}" value="Update"/>
+            <h:commandButton styleClass="btn btn-light"   rendered="#{billsBean.entity.bills_id!=NULL}" action="#{billsBean.clear}" value="Clear Form"/>
         </h:form>
         <br/>
         <h:form>
@@ -69,10 +70,14 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Admin</f:facet>
-                    <h:commandButton action="#{billsBean.delete(u)}" value="Delete"/>
-                    <h:commandButton action="#{billsBean.setEntity(u)}" value="Update"/>
+                    <h:commandButton styleClass="btn btn-light"  action="#{billsBean.delete(u)}" value="Delete"/>
+                    <h:commandButton styleClass="btn btn-light"  action="#{billsBean.setEntity(u)}" value="Update"/>
                 </h:column>
+                  
             </h:dataTable>
+              
         </h:form>
+          
     </h:body>
+      
 </html>

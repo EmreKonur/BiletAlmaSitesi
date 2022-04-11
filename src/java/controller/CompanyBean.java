@@ -25,6 +25,10 @@ public class CompanyBean implements Serializable {
         this.getDao().createCompany(entity);
         this.entity=new Company();
     }
+    public String getCompany_name(String company_id){
+        Company u =this.getDao().findByID(company_id);
+        return u.getCompany_name();
+    }
     
     public void delete(Company u) throws ClassNotFoundException, SQLException{
         this.getDao().delete(u);

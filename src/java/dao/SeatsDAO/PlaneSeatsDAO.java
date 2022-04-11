@@ -13,11 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import util.DBConnection;
 
-/**
- *
- * @author emrek
- */
-public class PlaneSeatsDAO extends DBConnection{ 
+public class PlaneSeatsDAO extends DBConnection {
 
     private Connection db;
 
@@ -25,9 +21,9 @@ public class PlaneSeatsDAO extends DBConnection{
         Statement st = this.connect().createStatement();
 
         String query = "insert into planeseats (seat_id,available_seat,number_of_seats) values"
-                + "('" + u.getSeat_id()+ "',"
-                + "'" + u.getAvailable_seat()+ "',"
-                + "'" + u.getNumber_of_seats()+ "')";
+                + "('" + u.getSeat_id() + "',"
+                + "'" + u.getAvailable_seat() + "',"
+                + "'" + u.getNumber_of_seats() + "')";
         int r = st.executeUpdate(query);
     }
 
@@ -45,7 +41,7 @@ public class PlaneSeatsDAO extends DBConnection{
         String query = "Select * from planeseats";
         ResultSet rs = st.executeQuery(query);
         while (rs.next()) {
-            PlaneSeatsList.add(new PlaneSeats(rs.getString("seat_id"), rs.getString("available_seat"),rs.getString("number_of_seats")));
+            PlaneSeatsList.add(new PlaneSeats(rs.getString("seat_id"), rs.getString("available_seat"), rs.getString("number_of_seats")));
         }
 
         return PlaneSeatsList;
@@ -54,8 +50,8 @@ public class PlaneSeatsDAO extends DBConnection{
     public void update(PlaneSeats u) throws SQLException, ClassNotFoundException {
         Statement st = this.connect().createStatement();
         String query = "update planeseats set available_seat='"
-                + u.getAvailable_seat()+ "', number_of_seats='" + u.getNumber_of_seats()
-                + "'  where seat_id='" + u.getSeat_id()+ "'";
+                + u.getAvailable_seat() + "', number_of_seats='" + u.getNumber_of_seats()
+                + "'  where seat_id='" + u.getSeat_id() + "'";
         st.executeUpdate(query);
     }
 
@@ -69,6 +65,23 @@ public class PlaneSeatsDAO extends DBConnection{
     public void setDb(Connection db) {
         this.db = db;
     }
-}
-    
 
+    public PlaneSeats findByID(String seat_id) {
+        PlaneSeats u = null;
+        try {
+            Statement st = this.connect().createStatement();
+
+            String query = "select * from planeseats where seat_id=" + seat_id;
+
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                u = new PlaneSeats(rs.getString("seat_id"), rs.getString("available_seat"), rs.getString("number_of_seats"));
+
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return u;
+    }
+}
