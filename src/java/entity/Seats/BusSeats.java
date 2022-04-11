@@ -45,7 +45,6 @@ public class BusSeats {
     public void setNumber_of_seats(String number_of_seats) {
         this.number_of_seats = number_of_seats;
     }
-
     
 }
     

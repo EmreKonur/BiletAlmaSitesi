@@ -27,6 +27,8 @@ public class TrainTravelRouteDAO extends DBConnection{
 
         String query = "insert into traintravelroute (travel_route_id,\"to\",\"from\") values"+
                 " ('"+u.getTravel_route_id()+"','"+u.getTo()+"','"+u.getFrom()+"')";
+                
+        System.out.println(u.getTravel_route_id()+query);
         int r=st.executeUpdate(query);
     }
     
@@ -53,6 +55,7 @@ public class TrainTravelRouteDAO extends DBConnection{
     public void update(TrainTravelRoute u) throws SQLException, ClassNotFoundException{
         Statement st=this.connect().createStatement();
         String query="update traintravelroute set \"to\"='"+u.getTo()+"', \"from\"='"+u.getFrom()+"' where travel_route_id='"+u.getTravel_route_id()+"'";
+        System.out.println(query);
         st.executeUpdate(query);
     }
 
@@ -65,6 +68,24 @@ public class TrainTravelRouteDAO extends DBConnection{
 
     public void setDb(Connection db) {
         this.db = db;
+    }
+    public TrainTravelRoute findByID(String travel_route_id) {
+        TrainTravelRoute u = null;
+        try {
+            Statement st = this.connect().createStatement();
+
+            String query = "select * from planetravelroute where travel_route_id='" + travel_route_id+"'";
+
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                u = new TrainTravelRoute(rs.getString("seat_id"), rs.getString("available_seat"), rs.getString("number_of_seats"));
+
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return u;
     }
 }
 

@@ -66,6 +66,24 @@ public class BusTravelRouteDAO extends DBConnection{
     public void setDb(Connection db) {
         this.db = db;
     }
+    public BusTravelRoute findByID(String travel_route_id) {
+        BusTravelRoute u = null;
+        try {
+            Statement st = this.connect().createStatement();
+
+            String query = "select * from planetravelroute where travel_route_id=" + travel_route_id;
+
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                u = new BusTravelRoute(rs.getString("seat_id"), rs.getString("available_seat"), rs.getString("number_of_seats"));
+
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return u;
+    }
 }
 
     
