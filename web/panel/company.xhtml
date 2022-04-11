@@ -6,12 +6,6 @@
     <h:head>
         <title>Company</title>
         <STYLE TYPE="TEXT/CSS">
-            .tadiwa{
-                background-image: url(resources/images/images.jpg);
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-            }
         *{
             margin:0;
             padding:0;
@@ -46,10 +40,11 @@
             background:#FFE87C;/*Renk Değişecek Unutma*/
         }
         </STYLE>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
     </h:head>
-    <h:body styleClass="tadiwa">
+    <h:body>
         <h:form>
-            <h:commandButton action="/index" value="Home" />
+            <h:commandButton styleClass="btn btn-light" action="/index" value="Home" />
         </h:form>
         <hr/>          
         <h:form>
@@ -61,9 +56,9 @@
             Company Address <h:inputText value="#{companyBean.entity.company_address}"/><br/>
             Company Phone Number <h:inputText value="#{companyBean.entity.company_phone_number}"/><br/>
             Company Email <h:inputText value="#{companyBean.entity.company_email}"/><br/>
-            <h:commandButton rendered="#{companyBean.entity.company_id==NULL}" action="#{companyBean.create}" value="Create"/>
-            <h:commandButton rendered="#{companyBean.entity.company_id!=NULL}" action="#{companyBean.update}" value="Update"/>
-            <h:commandButton rendered="#{companyBean.entity.company_id!=NULL}" action="#{companyBean.clear}" value="Clear Form"/>
+            <h:commandButton styleClass="btn btn-light"  rendered="#{companyBean.entity.company_id==NULL}" action="#{companyBean.create}" value="Create"/>
+            <h:commandButton styleClass="btn btn-light"  rendered="#{companyBean.entity.company_id!=NULL}" action="#{companyBean.update}" value="Update"/>
+            <h:commandButton styleClass="btn btn-light"  rendered="#{companyBean.entity.company_id!=NULL}" action="#{companyBean.clear}" value="Clear Form"/>
         </h:form>
         <br/>
         <h:form>
@@ -90,10 +85,14 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Admin</f:facet>
-                    <h:commandButton action="#{companyBean.delete(u)}" value="Delete"/>
-                    <h:commandButton action="#{companyBean.setEntity(u)}" value="Update"/>
+                    <h:commandButton styleClass="btn btn-light"  action="#{companyBean.delete(u)}" value="Delete"/>
+                    <h:commandButton styleClass="btn btn-light"  action="#{companyBean.setEntity(u)}" value="Update"/>
                 </h:column>
+                  
             </h:dataTable>
+              
         </h:form>
+          
     </h:body>
+      
 </html>
