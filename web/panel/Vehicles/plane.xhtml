@@ -6,12 +6,6 @@
     <h:head>
         <title>Plane</title>
         <STYLE TYPE="TEXT/CSS">
-            .tadiwa{
-                background-image: url(resources/images/images.jpg);
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-            }
         *{
             margin:0;
             padding:0;
@@ -46,10 +40,11 @@
             background:#FFE87C;/*Renk Değişecek Unutma*/
         }
         </STYLE>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
     </h:head>
-    <h:body styleClass="tadiwa">
+    <h:body>
         <h:form>
-            <h:commandButton action="/index" value="Home" />
+            <h:commandButton styleClass="btn btn-light" action="/index" value="Home" />
         </h:form>
         <hr/>          
         <h:form>
@@ -67,9 +62,9 @@
             <h:outputText rendered="#{planeBean.entity.plane_id!=NULL}" value="Company_id" /> 
             <h:inputText readonly="True" rendered="#{planeBean.entity.plane_id!=NULL}"  value="#{planeBean.entity.plane_id}"/>
       
-            <h:commandButton rendered="#{planeBean.entity.plane_id==NULL}" action="#{planeBean.create}" value="Create"/>
-            <h:commandButton rendered="#{planeBean.entity.plane_id!=NULL}" action="#{planeBean.update}" value="Update"/>
-            <h:commandButton rendered="#{planeBean.entity.plane_id!=NULL}" action="#{planeBean.clear}" value="Clear Form"/>
+            <h:commandButton styleClass="btn btn-light" rendered="#{planeBean.entity.plane_id==NULL}" action="#{planeBean.create}" value="Create"/>
+            <h:commandButton styleClass="btn btn-light" rendered="#{planeBean.entity.plane_id!=NULL}" action="#{planeBean.update}" value="Update"/>
+            <h:commandButton styleClass="btn btn-light" rendered="#{planeBean.entity.plane_id!=NULL}" action="#{planeBean.clear}" value="Clear Form"/>
         </h:form>
         <br/>
         <h:form>
@@ -97,8 +92,8 @@
                 
                 <h:column>
                     <f:facet name="header">Admin</f:facet>
-                    <h:commandButton action="#{planeBean.delete(u)}" value="Delete"/>
-                    <h:commandButton action="#{planeBean.setEntity(u)}" value="Update"/>
+                    <h:commandButton styleClass="btn btn-light" action="#{planeBean.delete(u)}" value="Delete"/>
+                    <h:commandButton styleClass="btn btn-light" action="#{planeBean.setEntity(u)}" value="Update"/>
                 </h:column>
             </h:dataTable>
         </h:form>
