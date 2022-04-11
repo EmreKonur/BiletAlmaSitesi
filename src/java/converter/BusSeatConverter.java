@@ -12,7 +12,8 @@ import jakarta.faces.convert.Converter;
 import jakarta.faces.convert.FacesConverter;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
+import java.lang.System;
+import java.lang.NullPointerException;
 /**
  *
  * @author ucaro
