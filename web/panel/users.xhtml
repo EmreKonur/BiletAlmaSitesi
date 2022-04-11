@@ -6,12 +6,6 @@
     <h:head>
         <title>Users</title>
         <STYLE TYPE="TEXT/CSS">
-            .tadiwa{
-                background-image: url(resources/images/images.jpg);
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-            }
         *{/*Yazıların ve tabloların internet sayfasının üstünden ve yanklarından olan uzaklığı
             padding etrafında boşluk
             margin yanındaki nesneler ile arasında boşluk
@@ -52,10 +46,12 @@
             background:#0DD;
         }
         </STYLE>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        
         </h:head>
-        <h:body styleClass="tadiwa">
+        <h:body>
         <h:form>
-            <h:commandButton action="/index" value="Home" />
+            <h:commandButton styleClass="btn btn-light" action="/index" value="Home" />
         </h:form>
         <hr/>          
         <h:form>
@@ -73,9 +69,9 @@
             User Nick Name       <h:inputText value="#{usersBean.entity.user_username}"/><br/>
             User Password <h:inputSecret value="#{usersBean.entity.user_password}"/><br/>
             #{userBean.entity.user_tckn}
-            <h:commandButton rendered="#{usersBean.entity.user_tckn==NULL}" action="#{usersBean.create}" value="Create" />
-            <h:commandButton rendered="#{usersBean.entity.user_tckn!=NULL}" action="#{usersBean.update}" value="Update" />
-            <h:commandButton rendered="#{usersBean.entity.user_tckn!=NULL}" action="#{usersBean.clear}" value="Clear Form" />
+            <h:commandButton styleClass="btn btn-light" rendered="#{usersBean.entity.user_tckn==NULL}" action="#{usersBean.create}" value="Create" />
+            <h:commandButton styleClass="btn btn-light" rendered="#{usersBean.entity.user_tckn!=NULL}" action="#{usersBean.update}" value="Update" />
+            <h:commandButton styleClass="btn btn-light" rendered="#{usersBean.entity.user_tckn!=NULL}" action="#{usersBean.clear}" value="Clear Form" />
         </h:form>
         <br/>
         <h:form>
@@ -114,11 +110,15 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Admin</f:facet>
-                    <h:commandButton action="#{usersBean.delete(u)}" value="Delete"/>
-                    <h:commandButton action="#{usersBean.setEntity(u)}" value="Update"/>
+                    <h:commandButton styleClass="btn btn-light" action="#{usersBean.delete(u)}" value="Delete"/>
+                    <h:commandButton styleClass="btn btn-light" action="#{usersBean.setEntity(u)}" value="Update"/>
                 </h:column>
+                  
             </h:dataTable>
+              
         </h:form>
+              
     </h:body>
+      
 </html>
 
