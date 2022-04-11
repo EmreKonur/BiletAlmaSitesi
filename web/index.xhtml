@@ -7,53 +7,71 @@
     <h:head>
         <title>Facelet Title</title>
         <STYLE TYPE="TEXT/CSS">
-            .tadiwa{
-                background-image: url(resources/images/images.jpg);
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
+
+            body
+            {
+                font:17px "Trebuchet MS", Arial, Helvetica, sans-serif;/*Yazı Tipleri*/
+                background:#EEE;/*Sayfa Background*/
             }
-        
-        body 
-        {
-            font:17px "Trebuchet MS", Arial, Helvetica, sans-serif;/*Yazı Tipleri*/
-            background:#EEE;/*Sayfa Background*/
-        }
- 
-        
+
+
         </STYLE>
+
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+
     </h:head>
-    <h:body styleClass="tadiwa">
+    <h:body>
         <h:form>
             <br>
-            <h:commandButton action="/panel/users" value="Users"/>
-            <h:commandButton action="/panel/bills" value="Bills"/>
-            <h:commandButton action="/panel/company" value="Company"/> 
+                <h:commandButton styleClass="btn btn-outline-primary" action="/panel/users" value="Users"/>
+                <h:commandButton styleClass="btn btn-outline-primary" action="/panel/bills" value="Bills"/>
+                <h:commandButton styleClass="btn btn-outline-primary" action="/panel/company" value="Company"/> 
             </br>
-            
+
             <br>
-            <h:commandButton action="/panel/Vehicles/bus" value="Bus"/>
-            <h:commandButton action="/panel/Vehicles/train" value="Train"/>
-            <h:commandButton action="/panel/Vehicles/plane" value="Plane"/>
+                <h:commandButton styleClass="btn btn-outline-primary" action="/panel/Vehicles/bus" value="Bus"/>
+                <h:commandButton styleClass="btn btn-outline-primary"  action="/panel/Vehicles/train" value="Train"/>
+                <h:commandButton styleClass="btn btn-outline-primary"  action="/panel/Vehicles/plane" value="Plane"/>
             </br>
-            
-            
-                       
-            
-            
+
+
+
+
+
             <br>
-            <h:commandButton action="/panel/TravelRoute/bustravelroute" value="BusRoute"/>
-            <h:commandButton action="/panel/TravelRoute/traintravelroute" value="TrainRoute"/>
-            <h:commandButton action="/panel/TravelRoute/planetravelroute" value="PlaneRoute"/>
+                <h:commandButton styleClass="btn btn-outline-primary"  action="/panel/TravelRoute/bustravelroute" value="BusRoute"/>
+                <h:commandButton styleClass="btn btn-outline-primary"  action="/panel/TravelRoute/traintravelroute" value="TrainRoute"/>
+                <h:commandButton styleClass="btn btn-outline-primary"  action="/panel/TravelRoute/planetravelroute" value="PlaneRoute"/>
             </br>
-            
+
             <br>
-            <h:commandButton action="/panel/Seats/busseats" value="BusSeat"/>
-            <h:commandButton action="/panel/Seats/trainseats" value="TrainSeat"/>
-            <h:commandButton action="/panel/Seats/planeseats" value="PlaneSeat"/>
+                <h:commandButton styleClass="btn btn-outline-primary"  action="/panel/Seats/busseats" value="BusSeat"/>
+                <h:commandButton styleClass="btn btn-outline-primary" action="/panel/Seats/trainseats" value="TrainSeat"/>
+                <h:commandButton styleClass="btn btn-outline-primary"  action="/panel/Seats/planeseats" value="PlaneSeat"/>
             </br>
+            <br/>
+            <br/>
+            <br/>
+            <img src="background.jpg" width="400" align="bottom"/> 
+            <br/>
+            <br/>
+            <br/>
+            <a href="http://localhost:8080/BiletAlmaSitesi-5f60cf3c6af20b0e1d44f1ff2b635040dc6b724b"  target = "_parent">www.biletim.com</a>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <p> Sistem Bakım Aşamasındadır...</p>
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+
         </h:form>
+
     </h:body>
-   
+
 </html>
 
