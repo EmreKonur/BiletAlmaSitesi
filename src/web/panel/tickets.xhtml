@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Tickets</title>
+        <STYLE TYPE="TEXT/CSS">
+        *{
+            margin:0;
+            padding:0;
+        }
+ 
+        body 
+        {
+            font:13px "Trebuchet MS", Arial, Helvetica, sans-serif;
+            background:#EEE;
+        }
+ 
+        table 
+        {
+            width:600px;
+            margin:200px auto;
+            table-layout:fixed;
+            border-collapse:collapse;
+        }
+ 
+        tr:nth-child(odd) 
+        {
+            background:#DDD;
+        }
+ 
+        td, th 
+        {
+            padding:8px;
+        }
+ 
+        th 
+        {
+            background:#FFE87C;/*Renk Değişecek Unutma*/
+        }
+        </STYLE>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton action="/index" value="Home" />
+        </h:form>
+        <hr/>          
+        <h:form>
+            Company ID <h:selectOneMenu value="#{companyBean.entity.company_id}">
+            <f:selectItems value="#{companyBean.list}" var="u" itemValue="#{u.company_id}" itemLabel="#{u.company_name}"/>
+            </h:selectOneMenu><br/>
+            User TCKN <h:selectOneMenu value="#{usersBean.entity.user_tckn}">
+            <f:selectItems value="#{usersBean.list}" var="u" itemValue="#{u.user_tckn}" itemLabel="#{u.user_name}"/>
+            </h:selectOneMenu><br/>
+            Train ID <h:selectOneMenu value="#{trainBean.entity.train_id}">
+            <f:selectItems value="#{trainBean.list}" var="u" itemValue="#{u.train_id}" itemLabel="#{u.train_name}"/>
+            </h:selectOneMenu><br/>
+            Bus ID <h:selectOneMenu value="#{busBean.entity.bus_id}">
+            <f:selectItems value="#{busBean.list}" var="u" itemValue="#{u.bus_id}" itemLabel="#{u.bus_plate_number}"/>
+            </h:selectOneMenu><br/>
+            Plane ID <h:selectOneMenu value="#{planeBean.entity.plane_id}">
+            <f:selectItems value="#{planeBean.list}" var="u" itemValue="#{u.plane_id}" itemLabel="#{u.plane_name}"/>
+            </h:selectOneMenu><br/>
+            Bills ID <h:selectOneMenu value="#{billsBean.entity.bills_id}">
+            <f:selectItems value="#{billsBean.list}" var="u" itemValue="#{u.bills_id}" itemLabel="#{u.bills_date}"/>
+            </h:selectOneMenu><br/>
+            
+            
+                
+            
+            <h:outputText rendered="#{ticketsBean.entity.ticket_id==NULL}" value="Ticket ID" />
+            <h:inputText rendered="#{ticketsBean.entity.ticket_id==NULL}" value="#{ticketsBean.entity.ticket_id}"/><br/>
+            <h:outputText rendered="#{ticketsBean.entity.ticket_id!=NULL}" value="Company_id" />
+            <h:inputText readonly="True" rendered="#{ticketsBean.entity.ticket_id!=NULL}"  value="#{ticketsBean.entity.ticket_id}"/>
+            Ticket Plate Number <h:inputText value="#{ticketsBean.entity.ticket_date}"/><br/>
+            Ticket Seat Design <h:inputText value="#{ticketsBean.entity.ticket_price}"/><br/>
+            Ticket Plate Number <h:inputText value="#{ticketsBean.entity.departure_date}"/><br/>
+            Ticket Plate Number <h:inputText value="#{ticketsBean.entity.arrival_date}"/><br/>
+            
+      
+            <h:commandButton rendered="#{ticketsBean.entity.ticket_id==NULL}" action="#{ticketsBean.create}" value="Create"/>
+            <h:commandButton rendered="#{ticketsBean.entity.ticket_id!=NULL}" action="#{ticketsBean.update}" value="Update"/>
+            <h:commandButton rendered="#{ticketsBean.entity.ticket_id!=NULL}" action="#{ticketsBean.clear}" value="Clear Form"/>
+        </h:form>
+        <br/>
+        <h:form>
+            <h:dataTable value="#{ticketsBean.list}" var="u">
+                <h:column>
+                    <f:facet name="header">Ticket ID</f:facet>
+                        #{u.ticket_id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Ticket Date</f:facet>
+                        #{u.ticket_date}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Ticket Price</f:facet>
+                        #{u.ticket_price}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Ticket Price</f:facet>
+                        #{u.departure_date}
+                </h:column><!-- comment -->
+                <h:column>
+                    <f:facet name="header">Ticket Price</f:facet>
+                        #{u.arrival_date}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Company ID</f:facet>
+                        #{companyBean.getCompany_name(entity.company_id)}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">User TCKN</f:facet>
+                        #{usersBean.getUser_name(entity.user_id)}
+                </h:column><!-- comment -->
+                <h:column>
+                    <f:facet name="header">Bus ID</f:facet>
+                        #{busBean.getBus_plate_number(entity.bus_id)}
+                </h:column><!-- comment -->
+                <h:column>
+                    <f:facet name="header">Train ID</f:facet>
+                        #{trainBean.getTrain_name(entity.Train_id)}
+                </h:column><!-- comment -->
+                <h:column>
+                    <f:facet name="header">Plane ID</f:facet>
+                        #{planeBean.getPlane_name(entity.plane_id)}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Bills ID</f:facet>
+                        #{billsBean.getBills_date(entity.bills_id)}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Admin</f:facet>
+                    <h:commandButton action="#{ticketsBean.delete(u)}" value="Delete"/>
+                    <h:commandButton action="#{ticketsBean.setEntity(u)}" value="Update"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>

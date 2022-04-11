@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      <h:head>
+        <title>BusTravelRoute</title>
+        <STYLE TYPE="TEXT/CSS">
+        *{
+            margin:0;
+            padding:0;
+        }
+ 
+        body 
+        {
+            font:13px "Trebuchet MS", Arial, Helvetica, sans-serif;
+            background:#EEE;
+        }
+ 
+        table 
+        {
+            width:600px;
+            margin:200px auto;
+            table-layout:fixed;
+            border-collapse:collapse;
+        }
+ 
+        tr:nth-child(odd) 
+        {
+            background:#DDD;
+        }
+ 
+        td, th 
+        {
+            padding:8px;
+        }
+ 
+        th 
+        {
+            background:#EBDDE2;
+        }
+        </STYLE>
+      </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton action="/index" value="Home" />
+        </h:form>
+        <hr/>          
+        <h:form>
+            <h:outputText rendered="#{bustravelrouteBean.entity.travel_route_id==NULL}" value="Bus Travel Route ID" />
+            <h:inputText rendered="#{bustravelrouteBean.entity.travel_route_id==NULL}" value="#{bustravelrouteBean.entity.travel_route_id}"/><br/>
+            <h:outputText rendered="#{bustravelrouteBean.entity.travel_route_id!=NULL}" value="Bus Travel Route ID" /> 
+            <h:inputText readonly="True" rendered="#{bustravelrouteBean.entity.travel_route_id!=NULL}" value="#{bustravelrouteBean.entity.travel_route_id}"/>
+            Bus Travel Route TO <h:inputText value="#{bustravelrouteBean.entity.to}"/><br/>
+            Bus Travel Route FROM <h:inputText value="#{bustravelrouteBean.entity.from}"/><br/>
+            <h:commandButton rendered="#{bustravelrouteBean.entity.travel_route_id==NULL}" action="#{bustravelrouteBean.create}" value="Create"/>
+            <h:commandButton rendered="#{bustravelrouteBean.entity.travel_route_id!=NULL}" action="#{bustravelrouteBean.update}" value="Update"/>
+            <h:commandButton rendered="#{bustravelrouteBean.entity.travel_route_id!=NULL}" action="#{bustravelrouteBean.clear}" value="Cleat Form"/>
+        </h:form>
+        <br/>
+        <h:form>
+            <h:dataTable value="#{bustravelrouteBean.list}" var="u">
+                <h:column>
+                    <f:facet name="header">Bus Travel Route ID</f:facet>
+                        #{u.travel_route_id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Bus Travel Route TO</f:facet>
+                        #{u.to}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Bus Travel Route FROM</f:facet>
+                        #{u.from}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Admin</f:facet>
+                    <h:commandButton action="#{bustravelrouteBean.delete(u)}" value="Delete"/>
+                    <h:commandButton action="#{bustravelrouteBean.setEntity(u)}" value="Update"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
