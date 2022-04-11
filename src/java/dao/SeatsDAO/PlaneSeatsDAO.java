@@ -13,10 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import util.DBConnection;
 
-/**
- *
- * @author emrek
- */
 public class PlaneSeatsDAO extends DBConnection {
 
     private Connection db;

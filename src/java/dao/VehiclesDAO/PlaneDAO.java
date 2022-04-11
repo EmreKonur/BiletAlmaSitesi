@@ -97,7 +97,6 @@ public class PlaneDAO extends DBConnection{
     public void setPtrDao(PlaneTravelRouteDAO ptrDao) {
         this.ptrDao = ptrDao;
     }
-
     
 }
 

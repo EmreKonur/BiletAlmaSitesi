@@ -19,8 +19,6 @@ public class TrainTravelRoute{
         this.travel_route_id = travel_route_id;
         this.to = to;
         this.from = from;
-        
-    
 }
 
     public String getTravel_route_id() {

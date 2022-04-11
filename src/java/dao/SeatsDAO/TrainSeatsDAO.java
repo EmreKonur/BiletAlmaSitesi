@@ -69,6 +69,24 @@ public class TrainSeatsDAO extends DBConnection{
     public void setDb(Connection db) {
         this.db = db;
     }
+    public TrainSeats findByID(String seat_id) {
+        TrainSeats u = null;
+        try {
+            Statement st = this.connect().createStatement();
+
+            String query = "select * from planeseats where seat_id=" + seat_id;
+
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                u = new TrainSeats(rs.getString("seat_id"), rs.getString("available_seat"), rs.getString("number_of_seats"));
+
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return u;
+    }
 }
     
 

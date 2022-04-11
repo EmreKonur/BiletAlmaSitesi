@@ -26,7 +26,7 @@ public class CompanyDAO extends DBConnection{
             ResultSet rs = st.executeQuery(query);
             
             while(rs.next()) {
-                u = new Company(rs.getString("company_id"),rs.getString("company_name"),rs.getString("company_address"),rs.getString("company_phone_number"),rs.getString("company_e_mail"));
+                u = new Company(rs.getString("company_id"),rs.getString("company_name"),rs.getString("company_address"),rs.getString("company_phone_number"),rs.getString("company_email"));
                 
             }
         } catch(Exception e) {
@@ -39,7 +39,7 @@ public class CompanyDAO extends DBConnection{
     public void createCompany(Company u) throws SQLException, ClassNotFoundException {
         Statement st = this.connect().createStatement();
 
-        String query = "insert into company (company_id,company_name,company_e_mail,company_address,company_phone_number) values"+
+        String query = "insert into company (company_id,company_name,company_email,company_address,company_phone_number) values"+
                 " ('"+u.getCompany_id()+"','"+u.getCompany_name()+"','"+u.getCompany_address()+"','"+u.getCompany_phone_number()+"','"+u.getCompany_email()+"')";
         int r=st.executeUpdate(query);
     }
@@ -57,7 +57,7 @@ public class CompanyDAO extends DBConnection{
         String query="Select * from company";
         ResultSet rs= st.executeQuery(query);
         while(rs.next()){
-            companyList.add(new Company(rs.getString("company_id"),rs.getString("company_name"),rs.getString("company_address"),rs.getString("company_phone_number"),rs.getString("company_e_mail")));
+            companyList.add(new Company(rs.getString("company_id"),rs.getString("company_name"),rs.getString("company_address"),rs.getString("company_phone_number"),rs.getString("company_email")));
         }
         return companyList;
     }
@@ -65,7 +65,7 @@ public class CompanyDAO extends DBConnection{
         Statement st=this.connect().createStatement();
         String query = "update company set company_name='" + u.getCompany_name() + "', company_phone_number='"
                 + u.getCompany_phone_number() + "', company_address='" + u.getCompany_address() 
-                + "', company_e_mail='" + u.getCompany_email()
+                + "', company_email='" + u.getCompany_email()
                 + "'  where company_id='" + u.getCompany_id() + "'";
         st.executeUpdate(query);
     }
