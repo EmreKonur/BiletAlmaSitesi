@@ -47,9 +47,10 @@
         }
         </STYLE>
     </h:head>
+      <h:outputStylesheet library="css" name="bootstrap.min.css"/>
     <h:body styleClass="tadiwa">
         <h:form>
-            <h:commandButton action="/index" value="Home" />
+            <h:commandButton styleClass="btn btn-light" action="/index" value="Home" />
         </h:form>
         <hr/>          
         <h:form>
@@ -67,9 +68,9 @@
             <h:outputText rendered="#{trainBean.entity.train_id!=NULL}" value="Company_id" /> 
             <h:inputText readonly="True" rendered="#{trainBean.entity.train_id!=NULL}"  value="#{trainBean.entity.train_id}"/>
       
-            <h:commandButton rendered="#{trainBean.entity.train_id==NULL}" action="#{trainBean.create}" value="Create"/>
-            <h:commandButton rendered="#{trainBean.entity.train_id!=NULL}" action="#{trainBean.update}" value="Update"/>
-            <h:commandButton rendered="#{trainBean.entity.train_id!=NULL}" action="#{trainBean.clear}" value="Clear Form"/>
+            <h:commandButton styleClass="btn btn-light" rendered="#{trainBean.entity.train_id==NULL}" action="#{trainBean.create}" value="Create"/>
+            <h:commandButton styleClass="btn btn-light" rendered="#{trainBean.entity.train_id!=NULL}" action="#{trainBean.update}" value="Update"/>
+            <h:commandButton styleClass="btn btn-light" rendered="#{trainBean.entity.train_id!=NULL}" action="#{trainBean.clear}" value="Clear Form"/>
         </h:form>
         <br/>
         <h:form>
@@ -97,8 +98,8 @@
                 
                 <h:column>
                     <f:facet name="header">Admin</f:facet>
-                    <h:commandButton action="#{trainBean.delete(u)}" value="Delete"/>
-                    <h:commandButton action="#{trainBean.setEntity(u)}" value="Update"/>
+                    <h:commandButton styleClass="btn btn-light" action="#{trainBean.delete(u)}" value="Delete"/>
+                    <h:commandButton styleClass="btn btn-light" action="#{trainBean.setEntity(u)}" value="Update"/>
                 </h:column>
             </h:dataTable>
         </h:form>
