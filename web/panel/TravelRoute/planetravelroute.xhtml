@@ -6,13 +6,6 @@
       <h:head>
         <title>PlaneTravelRoute</title>
         <STYLE TYPE="TEXT/CSS">
-            .tadiwa{
-                background-image: url(resources/images/images.jpg);
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-            }
-            
         *{
             margin:0;
             padding:0;
@@ -47,10 +40,11 @@
             background:#D16587;
         }
         </STYLE>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
       </h:head>
-      <h:body styleClass="tadiwa">
+      <h:body>
             <h:form>
-            <h:commandButton action="/index" value="Home" />
+            <h:commandButton styleClass="btn btn-light" action="/index" value="Home" />
         </h:form>
         <hr/>          
         <h:form>
@@ -66,9 +60,9 @@
             
             <h:outputText value="Plane Travel Route From" />
             <h:inputText value="#{planetravelrouteBean.entity.from}"/> <br/>
-            <h:commandButton rendered="#{planetravelrouteBean.entity.travel_route_id==NULL}" action="#{planetravelrouteBean.create}" value="Create"/>
-            <h:commandButton rendered="#{planetravelrouteBean.entity.travel_route_id!=NULL}" action="#{planetravelrouteBean.update}" value="Update"/>
-            <h:commandButton rendered="#{planetravelrouteBean.entity.travel_route_id!=NULL}" action="#{planetravelrouteBean.clear}" value="Clear Form"/>
+            <h:commandButton styleClass="btn btn-light" rendered="#{planetravelrouteBean.entity.travel_route_id==NULL}" action="#{planetravelrouteBean.create}" value="Create"/>
+            <h:commandButton styleClass="btn btn-light" rendered="#{planetravelrouteBean.entity.travel_route_id!=NULL}" action="#{planetravelrouteBean.update}" value="Update"/>
+            <h:commandButton styleClass="btn btn-light" rendered="#{planetravelrouteBean.entity.travel_route_id!=NULL}" action="#{planetravelrouteBean.clear}" value="Clear Form"/>
         </h:form>
         <br/>
         <h:form>
@@ -87,11 +81,15 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Admin</f:facet>
-                    <h:commandButton action="#{planetravelrouteBean.delete(u)}" value="Delete"/>
-                    <h:commandButton action="#{planetravelrouteBean.setEntity(u)}" value="Update"/>
+                    <h:commandButton styleClass="btn btn-light" action="#{planetravelrouteBean.delete(u)}" value="Delete"/>
+                    <h:commandButton styleClass="btn btn-light" action="#{planetravelrouteBean.setEntity(u)}" value="Update"/>
                 </h:column>
+                  
             </h:dataTable>
+              
         </h:form>
+            
     </h:body>
+      
 </html>
 
