@@ -40,12 +40,15 @@
             background:#EBDDE2;
         }
         </STYLE>
-        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
       </h:head>
-    
     <h:body>
         <h:form>
-            <h:commandButton styleClass="btn btn-light" action="/index" value="Home" />
+            <h:commandButton action="/index" value="Home" />
+        </h:form>
+               <h:form>
+            <pre>Page #{bustravelrouteBean.page} of #{bustravelrouteBean.pageCount}</pre>
+            <h:commandButton action="#{bustravelrouteBean.previous()}"  value="Previous"/>
+            <h:commandButton action="#{bustravelrouteBean.next()}" value="Next"/>
         </h:form>
         <hr/>          
         <h:form>
@@ -55,9 +58,9 @@
             <h:inputText readonly="True" rendered="#{bustravelrouteBean.entity.travel_route_id!=NULL}" value="#{bustravelrouteBean.entity.travel_route_id}"/>
             Bus Travel Route TO <h:inputText value="#{bustravelrouteBean.entity.to}"/><br/>
             Bus Travel Route FROM <h:inputText value="#{bustravelrouteBean.entity.from}"/><br/>
-            <h:commandButton styleClass="btn btn-light" rendered="#{bustravelrouteBean.entity.travel_route_id==NULL}" action="#{bustravelrouteBean.create}" value="Create"/>
-            <h:commandButton styleClass="btn btn-light" rendered="#{bustravelrouteBean.entity.travel_route_id!=NULL}" action="#{bustravelrouteBean.update}" value="Update"/>
-            <h:commandButton styleClass="btn btn-light" rendered="#{bustravelrouteBean.entity.travel_route_id!=NULL}" action="#{bustravelrouteBean.clear}" value="Cleat Form"/>
+            <h:commandButton rendered="#{bustravelrouteBean.entity.travel_route_id==NULL}" action="#{bustravelrouteBean.create}" value="Create"/>
+            <h:commandButton rendered="#{bustravelrouteBean.entity.travel_route_id!=NULL}" action="#{bustravelrouteBean.update}" value="Update"/>
+            <h:commandButton rendered="#{bustravelrouteBean.entity.travel_route_id!=NULL}" action="#{bustravelrouteBean.clear}" value="Cleat Form"/>
         </h:form>
         <br/>
         <h:form>
@@ -76,16 +79,11 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Admin</f:facet>
-                    <h:commandButton styleClass="btn btn-light" action="#{bustravelrouteBean.delete(u)}" value="Delete"/>
-                    <h:commandButton styleClass="btn btn-light" action="#{bustravelrouteBean.setEntity(u)}" value="Update"/>
-                      
+                    <h:commandButton action="#{bustravelrouteBean.delete(u)}" value="Delete"/>
+                    <h:commandButton action="#{bustravelrouteBean.setEntity(u)}" value="Update"/>
                 </h:column>
-                  
             </h:dataTable>
-              
         </h:form>
-          
     </h:body>
-      
 </html>
 

@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Register Page</title>
+        <STYLE TYPE="TEXT/CSS">
+            *{/*Yazıların ve tabloların internet sayfasının üstünden ve yanklarından olan uzaklığı
+                padding etrafında boşluk
+                margin yanındaki nesneler ile arasında boşluk
+                */
+                margin:0;
+                padding:0;
+            }
+
+            body
+            {
+                font:13px "Trebuchet MS", Arial, Helvetica, sans-serif;/*Yazı Tipleri*/
+                background:#EEE;/*Sayfa Background*/
+            }
+
+            table
+            {
+
+                width:600px;
+                margin:200px auto;/*Tablo ortada veya sol köşeye yapışık olabilir*/
+                table-layout:fixed;
+                border-collapse:collapse;/*Tablo içindeki çizgiler*/
+            }
+
+            /*Table içindeki arka plan*/
+            tr:nth-child(odd)
+            {
+                background:#DDD;
+            }
+            /*Table içindeki alt ve üst satır arası boşluk*/
+            td, th
+            {
+                border: px solid grey;/*Tablo kenarındaki çizgiler*/
+                padding:8px;
+            }
+            /*Table Üstündeki mavi renk*/
+            th
+            {
+                background:#0DD;
+            }
+        </STYLE>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton action="/index" value="Home" />
+        </h:form>
+        <hr/>          
+        <h:form id="category-form">
+
+
+            <h:outputText rendered="#{usersBean.entity.user_tckn==NULL}" value="User TCKN">
+
+            </h:outputText>
+            <h:inputText id="tckn1" rendered="#{usersBean.entity.user_tckn==NULL}" value="#{usersBean.entity.user_tckn}" validator="#{registerValidator.tcknValidator}" >
+               
+            </h:inputText><br/>
+
+            <h:outputText rendered="#{usersBean.entity.user_tckn!=NULL}" value="User TCKN" /> 
+            <h:inputText id="tckn" readonly="True" rendered="#{usersBean.entity.user_tckn!=NULL}"  validator="#{registerValidator.tcknValidator}" value="#{usersBean.entity.user_tckn}" >
+                <h:message for="tckn" rendered="#{usersBean.entity.user_tckn!=NULL}" style="color:red; font-size:10pt"/>
+            </h:inputText><br/>
+            User Name             <h:inputText value="#{usersBean.entity.user_name}"/><br/>
+            User Number          <h:inputText value="#{usersBean.entity.user_phone_number}"/><br/>
+            User Address           <h:inputText value="#{usersBean.entity.user_address}"/><br/>
+            User E-mail           <h:inputText id="email" value="#{usersBean.entity.user_email}" validator="#{registerValidator.emailValidator}">
+            </h:inputText><br/>
+            User Gender        <h:inputText maxlength="1" value="#{usersBean.entity.user_gender}"/><br/>
+            User Nick Name       <h:inputText value="#{usersBean.entity.user_username}"/><br/>
+            User Password <h:inputSecret value="#{usersBean.entity.user_password}"  validator="#{registerValidator.passValidator}">
+                <f:validateLength minimum="8"/>
+            </h:inputSecret><br/>
+            #{userBean.entity.user_tckn}
+            <h:commandButton rendered="#{usersBean.entity.user_tckn==NULL}" action="#{usersBean.create}" value="Create" />
+            <h:messages>
+                
+            </h:messages>
+        </h:form>
+    </h:body>
+</html>
+

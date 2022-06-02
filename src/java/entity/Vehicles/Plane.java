@@ -18,8 +18,10 @@ public class Plane {
     private PlaneTravelRoute planeTravelRoute;
     private Company company;
     private PlaneSeats planeseats;
+    public String getPlane_id;
 
     public Plane() {
+        
     }
 
     public Plane(String plane_id, PlaneSeats planeseats, PlaneTravelRoute planeTravelRoute, Company company) {
@@ -28,6 +30,7 @@ public class Plane {
         this.planeTravelRoute=planeTravelRoute;
         this.company = company;
     }
+
 
     public Company getCompany() {
         return company;
@@ -61,5 +64,9 @@ public class Plane {
         this.planeTravelRoute = planeTravelRoute;
     }
 
-    
+    public Plane findByID(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
 }

@@ -10,12 +10,10 @@ import jakarta.faces.component.UIComponent;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.convert.Converter;
 import jakarta.faces.convert.FacesConverter;
-import java.lang.System;
-import java.lang.NullPointerException;
 
 /**
  *
- * @author berat
+ * @author emrek
  */
 @FacesConverter("companyConverter")
 public class CompanyConverter implements Converter {
@@ -31,7 +29,7 @@ public class CompanyConverter implements Converter {
 
     @Override
     public String getAsString(FacesContext fc, UIComponent uic, Object t) {
-        Company c= (Company)t;
+        Company c = (Company) t;
         return c.getCompany_id();
     }
 

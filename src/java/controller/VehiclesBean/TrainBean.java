@@ -12,6 +12,10 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ *
+ * @author emrek
+ */
 @Named(value = "trainBean")
 @SessionScoped
 public class TrainBean implements Serializable{

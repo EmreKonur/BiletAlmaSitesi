@@ -6,13 +6,6 @@
       <h:head>
         <title>PlaneSeats</title>
         <STYLE TYPE="TEXT/CSS">
-            .tadiwa{
-                background-image: url(resources/images/images.jpg);
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-            }
-            
         *{
            
             margin:0;
@@ -52,12 +45,11 @@
         
         
       </h:head>
-    <h:body styleClass="tadiwa">
+    <h:body>
         <h:form>
             <h:commandButton action="/index" value="Home" />
         </h:form>
-        <hr/>          
-        
+        <hr/>
         <h:form>
             <h:outputText rendered="#{planeseatsBean.entity.seat_id==NULL}" value="Plane Seat ID" />
             <h:inputText rendered="#{planeseatsBean.entity.seat_id==NULL}" value="#{planeseatsBean.entity.seat_id}"/><br/>

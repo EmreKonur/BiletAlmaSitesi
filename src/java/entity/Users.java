@@ -4,12 +4,15 @@
  */
 package entity;
 
+import java.io.Serializable;
+
 /**
  *
  * @author berat
  */
-public class Users {
+public class Users implements Serializable{
     private String user_tckn,user_name,user_phone_number,user_address,user_email,user_gender,user_username,user_password;
+    public String getUser_tckn;
 
     public Users() {
     }
@@ -93,5 +96,9 @@ public class Users {
     @Override
     public String toString() {
         return "Users{" + "user_tckn=" + user_tckn + ", user_name=" + user_name + ", user_phone_number=" + user_phone_number + ", user_address=" + user_address + ", user_email=" + user_email + ", user_gender=" + user_gender + ", user_username=" + user_username + ", user_password=" + user_password + '}';
+    }
+
+    public Users findByID(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

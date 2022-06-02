@@ -6,13 +6,13 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Facelet Title</title>
+        
         <STYLE TYPE="TEXT/CSS">
         
         body 
         {
             font:17px "Trebuchet MS", Arial, Helvetica, sans-serif;/*Yazı Tipleri*/
-            background:#EEE/*Sayfa Background*/
-                
+            background:#EEE;/*Sayfa Background*/
         }
  
         
@@ -21,11 +21,19 @@
     <h:body>
         <h:form>
             <br>
-            <h:commandButton action="/panel/users" value="Users"/>
+            
             <h:commandButton action="/panel/bills" value="Bills"/>
             <h:commandButton action="/panel/company" value="Company"/> 
+            <h:commandButton action="/panel/tickets" value="Tickets"/>
+            <h:commandButton action="/Document/Documents" value="Document"/>
             </br>
-           
+            
+            <br>
+            <h:commandButton action="/panel/Vehicles/bus" value="Bus"/>
+            <h:commandButton action="/panel/Vehicles/train" value="Train"/>
+            <h:commandButton action="/panel/Vehicles/plane" value="Plane"/>
+            </br>
+            
             <br>
             <h:commandButton action="/panel/TravelRoute/bustravelroute" value="BusRoute"/>
             <h:commandButton action="/panel/TravelRoute/traintravelroute" value="TrainRoute"/>
@@ -37,6 +45,16 @@
             <h:commandButton action="/panel/Seats/trainseats" value="TrainSeat"/>
             <h:commandButton action="/panel/Seats/planeseats" value="PlaneSeat"/>
             </br>
+            
+            
+            <br>
+            <h:commandButton action="/login" value="Login"/>
+            <h:commandButton action="/logout" value="Logout"/>
+            <h:commandButton action="/register" value="Register"/>
+            </br>
+            <h:form>
+                <h:commandButton action="panel/adminpage" value="Admin Page"/>
+            </h:form>
         </h:form>
     </h:body>
    

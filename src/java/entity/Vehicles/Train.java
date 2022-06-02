@@ -4,37 +4,27 @@
  */
 package entity.Vehicles;
 
-import entity.Company;
-import entity.Seats.TrainSeats;
-import entity.TravelRoute.TrainTravelRoute;
-
 /**
  *
  * @author emrek
  */
 public class Train {
-    
     private String train_id;
-    private TrainTravelRoute trainTravelRoute;
-    private Company company;
-    private TrainSeats trainseats;
+    private String company_id,seat_id,travel_route_id;
+    public String getTrain_id;
 
     public Train() {
     }
 
-    public Train(String train_id, TrainSeats trainseats, TrainTravelRoute trainTravelRoute, Company company) {
+    public Train(String train_id, String company_id, String seat_id, String travel_route_id) {
         this.train_id = train_id;
-        this.trainseats=trainseats;
-        this.trainTravelRoute=trainTravelRoute;
-        this.company = company;
+        this.company_id = company_id;
+        this.seat_id = seat_id;
+        this.travel_route_id = travel_route_id;
     }
 
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
+    public Train(String string, String string0, String string1) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public String getTrain_id() {
@@ -45,20 +35,42 @@ public class Train {
         this.train_id = train_id;
     }
 
-    public TrainSeats getTrainseats() {
-        return trainseats;
+    public String getCompany_id() {
+        return company_id;
     }
 
-    public void setTrainseats(TrainSeats trainseats) {
-        this.trainseats = trainseats;
+    public void setCompany_id(String comany_id) {
+        this.company_id = comany_id;
     }
 
-    public TrainTravelRoute getTrainTravelRoute() {
-        return trainTravelRoute;
+    public String getSeat_id() {
+        return seat_id;
     }
 
-    public void setTrainTravelRoute(TrainTravelRoute trainTravelRoute) {
-        this.trainTravelRoute = trainTravelRoute;
+    public void setSeat_id(String seat_id) {
+        this.seat_id = seat_id;
     }
+
+    public String getTravel_route_id() {
+        return travel_route_id;
+    }
+
+    public void setTravel_route_id(String travel_route_id) {
+        this.travel_route_id = travel_route_id;
+    }
+
+    public Train findByID(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    
+
+    
+
+
+   
+
+    
+    
 
 }

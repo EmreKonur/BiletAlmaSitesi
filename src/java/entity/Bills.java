@@ -36,4 +36,8 @@ public class Bills {
         this.bills_date = bills_date;
     }
 
+    public Bills findByID(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

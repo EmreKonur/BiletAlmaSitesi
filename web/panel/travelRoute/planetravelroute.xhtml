@@ -6,13 +6,6 @@
       <h:head>
         <title>PlaneTravelRoute</title>
         <STYLE TYPE="TEXT/CSS">
-            .tadiwa{
-                background-image: url(resources/images/images.jpg);
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-            }
-            
         *{
             margin:0;
             padding:0;
@@ -48,9 +41,14 @@
         }
         </STYLE>
       </h:head>
-      <h:body styleClass="tadiwa">
+      <h:body>
             <h:form>
             <h:commandButton action="/index" value="Home" />
+        </h:form>
+             <h:form>
+            <pre>Page #{planetravelrouteBean.page} of #{planetravelrouteBean.pageCount}</pre>
+            <h:commandButton action="#{planetravelrouteBean.previous()}"  value="Previous"/>
+            <h:commandButton action="#{planetravelrouteBean.next()}" value="Next"/>
         </h:form>
         <hr/>          
         <h:form>

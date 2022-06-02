@@ -3,53 +3,52 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-      <h:head>
+    <h:head>
         <title>TrainTravelRoute</title>
         <STYLE TYPE="TEXT/CSS">
-            .tadiwa{
-                background-image: url(resources/images/images.jpg);
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
+            *{
+                margin:0;
+                padding:0;
             }
-        *{
-            margin:0;
-            padding:0;
-        }
- 
-        body 
-        {
-            font:13px "Trebuchet MS", Arial, Helvetica, sans-serif;
-            background:#EEE;
-        }
- 
-        table 
-        {
-            width:600px;
-            margin:200px auto;
-            table-layout:fixed;
-            border-collapse:collapse;
-        }
- 
-        tr:nth-child(odd) 
-        {
-            background:#DDD;
-        }
- 
-        td, th 
-        {
-            padding:8px;
-        }
- 
-        th 
-        {
-            background:#A74AC7;
-        }
+
+            body
+            {
+                font:13px "Trebuchet MS", Arial, Helvetica, sans-serif;
+                background:#EEE;
+            }
+
+            table
+            {
+                width:600px;
+                margin:200px auto;
+                table-layout:fixed;
+                border-collapse:collapse;
+            }
+
+            tr:nth-child(odd)
+            {
+                background:#DDD;
+            }
+
+            td, th
+            {
+                padding:8px;
+            }
+
+            th
+            {
+                background:#A74AC7;
+            }
         </STYLE>
-      </h:head>
-    <h:body styleClass="tadiwa">
+    </h:head>
+    <h:body>
         <h:form>
             <h:commandButton action="/index" value="Home" />
+        </h:form>
+        <h:form>
+            <pre>Page #{traintravelrouteBean.page} of #{traintravelrouteBean.pageCount}</pre>
+            <h:commandButton action="#{traintravelrouteBean.previous()}"  value="Previous"/>
+            <h:commandButton action="#{traintravelrouteBean.next()}" value="Next"/>
         </h:form>
         <hr/>          
         <h:form>
@@ -57,12 +56,12 @@
             <h:inputText rendered="#{traintravelrouteBean.entity.travel_route_id==NULL}" value="#{traintravelrouteBean.entity.travel_route_id}"/><br/>
             <h:outputText rendered="#{traintravelrouteBean.entity.travel_route_id!=NULL}" value="Train Travel Route ID" /> 
             <h:inputText readonly="True" rendered="#{traintravelrouteBean.entity.travel_route_id!=NULL}" value="#{traintravelrouteBean.entity.travel_route_id}"/>
-            
-            
+
+
             <h:outputText value="Train Travel Route To" />
             <h:inputText value="#{traintravelrouteBean.entity.to}"/><br/>
-            
-            
+
+
             <h:outputText value="Train Travel Route From" />
             <h:inputText value="#{traintravelrouteBean.entity.from}"/> <br/>
             <h:commandButton rendered="#{traintravelrouteBean.entity.travel_route_id==NULL}" action="#{traintravelrouteBean.create}" value="Create"/>

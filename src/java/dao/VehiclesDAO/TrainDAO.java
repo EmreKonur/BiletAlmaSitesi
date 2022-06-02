@@ -4,12 +4,6 @@
  */
 package dao.VehiclesDAO;
 
-import dao.CompanyDAO;
-import dao.SeatsDAO.TrainSeatsDAO;
-import dao.TravelRouteDAO.TrainTravelRouteDAO;
-import entity.Company;
-import entity.Seats.TrainSeats;
-import entity.TravelRoute.TrainTravelRoute;
 import entity.Vehicles.Train;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,21 +18,18 @@ import util.DBConnection;
  * @author emrek
  */
 public class TrainDAO extends DBConnection{
-        private Connection db;
-    private CompanyDAO compDao;
-    private TrainSeatsDAO psDao;
-    private TrainTravelRouteDAO ptrDao;
+    private Connection db;
 
     public void createTrain(Train u) throws SQLException, ClassNotFoundException {
-        Statement st = this.connect().createStatement();
+        Statement st = this.getConnection().createStatement();
+
         String query = "insert into train (train_id,company_id,seat_id,travel_route_id) values"+
-                " ('"+u.getTrain_id()+"','"+u.getCompany().getCompany_id()+"','"
-                +u.getTrainseats().getSeat_id()+"','"+u.getTrainTravelRoute().getTravel_route_id()+"')";
+                " ('"+u.getTrain_id()+"','"+u.getTrain_id()+"','"+u.getSeat_id()+"','"+u.getTravel_route_id()+"')";
         int r=st.executeUpdate(query);
     }
     
     public void delete(Train u) throws SQLException, ClassNotFoundException {
-        Statement st = this.connect().createStatement();
+        Statement st = this.getConnection().createStatement();
 
         String query = "delete from train where train_id='"+u.getTrain_id()+"'";
         int r=st.executeUpdate(query);
@@ -50,52 +41,52 @@ public class TrainDAO extends DBConnection{
         String query="Select * from train";
         ResultSet rs= st.executeQuery(query);
         while(rs.next()){
-            Company c= this.getCompDao().findByID(rs.getString("company_id"));
-            TrainSeats ps=this.getPsDao().findByID(rs.getString("seat_id"));
-            TrainTravelRoute ptr=this.getPtrDao().findByID(rs.getString("travel_route_id"));
-            trainList.add(new Train(rs.getString("train_id"),ps,ptr,c));
+            trainList.add(new Train(rs.getString("train_id"),rs.getString("company_id"),rs.getString("seat_id"),rs.getString("travel_route_id")));
         }
         return trainList;
     }
     public void update(Train u) throws SQLException, ClassNotFoundException{
-        Statement st=this.connect().createStatement();
-        String query = "update train set company_id='" +u.getCompany().getCompany_id()+ "', seat_id='"
-                + u.getTrainseats().getSeat_id()+ "', travel_route_id='" + u.getTrainTravelRoute().getTravel_route_id()+ "'";
+        Statement st=this.getConnection().createStatement();
+        String query = "update train set company_id='" + "', seat_id='"
+                + u.getSeat_id() + "', travel_route_id='" + u.getTravel_route_id()  + "'";
         st.executeUpdate(query);
     }
     
     
     public Connection getDb() throws SQLException, ClassNotFoundException {
         if (this.db == null) {
-            this.db = this.connect();
+            this.db = this.getConnection();
         }
         return db;
     }
-
-    public CompanyDAO getCompDao() {
-        return compDao;
+    
+    public void setDb(Connection db) {
+        this.db = db;
     }
 
-    public void setCompDao(CompanyDAO compDao) {
-        this.compDao = compDao;
-    }
-
-   public TrainSeatsDAO getPsDao() {
-        if(psDao==null)psDao=new TrainSeatsDAO(); 
-        return psDao;
-    }
-
-    public void setPsDao(TrainSeatsDAO psDao) {
-        this.psDao = psDao;
+    
+    public Train findByID(String train_id){
+        Train t=null;
+        try{
+            Statement st = this.getConnection().createStatement();
+            
+            String query = "select * from train where train_id="+ train_id ;
+            
+            ResultSet rs = st.executeQuery(query);
+            
+            while(rs.next()) {
+                t = new Train(rs.getString("train_id"),rs.getString("company_id"),rs.getString("seat_id"),rs.getString("travel_route_id"));
+                
+            }
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return t;
     }
     
-    public TrainTravelRouteDAO getPtrDao() {
-        if(ptrDao==null)ptrDao=new TrainTravelRouteDAO();
-        return ptrDao;
-    }
 
-    public void setPtrDao(TrainTravelRouteDAO ptrDao) {
-        this.ptrDao = ptrDao;
-    }
     
 }
+
+    
+

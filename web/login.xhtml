@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <head>
+        <title>Admin Login</title>
+        <STYLE TYPE="TEXT/CSS">
+
+            body
+            {
+                font:17px "Trebuchet MS", Arial, Helvetica, sans-serif;/*Yazı Tipleri*/
+                background:#EEE;/*Sayfa Background*/
+            }
+
+
+        </STYLE>
+    </head>
+    <body>
+        <h:form id="login-form">
+            Email <h:inputText id="uname" value="#{sessionBean.eposta}" 
+                               validator="#{loginValidator.emailValidator}" required="true" requiredMessage="Epostayı girmeniz gerekli!">
+            </h:inputText> <br/>
+            <h:message for="uname" style="color:red; font-size:10pt"/><br/>
+            Password <h:inputText id="pass" value="#{sessionBean.sifre}" 
+                                  validator="#{loginValidator.passValidator}" required="true" requiredMessage="Şifreyi girmeniz gerekli!">
+                <f:validateLength minimum="3"/>
+                <f:ajax execute="@this" render="login-form"/>
+            </h:inputText><br/>
+            <h:message for="pass" style="color:red;font-size:10pt "/><br/>
+            <h:commandButton action="#{sessionBean.login}" value="Login">
+            </h:commandButton>
+            
+        </h:form>
+        <h:form>
+            <h:commandButton action="register" value="Register">
+                <f:ajax execute="@this" render="login-form"/>
+            </h:commandButton>
+        </h:form>
+        <h:messages>
+
+        </h:messages>
+
+    </body>
+</html>
+

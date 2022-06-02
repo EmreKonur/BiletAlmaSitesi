@@ -4,6 +4,7 @@
  */
 package dao;
 
+import entity.Bills;
 import java.sql.Connection;
 import util.DBConnection;
 import entity.Users;
@@ -18,7 +19,7 @@ public class UsersDAO extends DBConnection {
     private Connection db;
 
     public void createUsers(Users u) throws SQLException, ClassNotFoundException {
-        Statement st = this.connect().createStatement();
+        Statement st = this.getConnection().createStatement();
 
         String query = "insert into users (user_tckn,user_name,user_phone_number,"
                 + "user_address,user_email,user_gender,user_username,user_password) values"
@@ -33,8 +34,26 @@ public class UsersDAO extends DBConnection {
         int r = st.executeUpdate(query);
     }
 
+    public Users getUser(String eposta, String sifre) {
+        Users u = null;
+        try {
+
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from users where user_email='" + eposta + "' and user_password='" + sifre + "'");
+            rs.next();
+            u = new Users(rs.getString("user_tckn"), rs.getString("user_name"),
+                    rs.getString("user_phone_number"), rs.getString("user_address"),
+                    rs.getString("user_email"), rs.getString("user_gender"),
+                    rs.getString("user_username"), rs.getString("user_password"));
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return u;
+    }
+
     public void delete(Users u) throws SQLException, ClassNotFoundException {
-        Statement st = this.connect().createStatement();
+        Statement st = this.getConnection().createStatement();
 
         String query = "delete from users where user_tckn='" + u.getUser_tckn() + "'";
         int r = st.executeUpdate(query);
@@ -57,9 +76,9 @@ public class UsersDAO extends DBConnection {
     }
 
     public void update(Users u) throws SQLException, ClassNotFoundException {
-        Statement st = this.connect().createStatement();
+        Statement st = this.getConnection().createStatement();
         String query = "update users set user_name='" + u.getUser_name() + "', user_phone_number='"
-                + u.getUser_phone_number() + "', user_address='" + u.getUser_address() 
+                + u.getUser_phone_number() + "', user_address='" + u.getUser_address()
                 + "', user_email='" + u.getUser_email()
                 + "', user_gender='" + u.getUser_gender()
                 + "', user_username='" + u.getUser_username()
@@ -70,12 +89,35 @@ public class UsersDAO extends DBConnection {
 
     public Connection getDb() throws SQLException, ClassNotFoundException {
         if (this.db == null) {
-            this.db = this.connect();
+            this.db = this.getConnection();
         }
         return db;
     }
 
     public void setDb(Connection db) {
         this.db = db;
+    }
+
+    public Users findByID(String user_id) {
+        Users z = null;
+        try {
+            Statement st = this.getConnection().createStatement();
+
+            String query = "select * from users where user_id=" + user_id;
+
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+
+                z = new Users(rs.getString("user_tckn"), rs.getString("user_name"),
+                        rs.getString("user_phone_number"), rs.getString("user_address"),
+                        rs.getString("user_email"), rs.getString("user_gender"),
+                        rs.getString("user_username"), rs.getString("user_password"));
+
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return z;
     }
 }

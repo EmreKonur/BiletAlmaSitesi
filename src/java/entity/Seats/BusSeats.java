@@ -4,6 +4,8 @@
  */
 package entity.Seats;
 
+import java.util.Objects;
+
 /**
  *
  * @author emrek
@@ -45,6 +47,29 @@ public class BusSeats {
     public void setNumber_of_seats(String number_of_seats) {
         this.number_of_seats = number_of_seats;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 23 * hash + Objects.hashCode(this.seat_id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final BusSeats other = (BusSeats) obj;
+        return Objects.equals(this.seat_id, other.seat_id);
+    }
+
     
 }
     

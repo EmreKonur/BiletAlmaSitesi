@@ -10,15 +10,8 @@ import jakarta.faces.component.UIComponent;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.convert.Converter;
 import jakarta.faces.convert.FacesConverter;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.lang.System;
-import java.lang.NullPointerException;
-/**
- *
- * @author ucaro
- */
-@FacesConverter
+
+@FacesConverter("busSeatConverter")
 public class BusSeatConverter implements Converter{
     private BusSeatsDAO psDao;
     @Override
@@ -27,6 +20,7 @@ public class BusSeatConverter implements Converter{
         BusSeats ps=this.getPsDao().findByID(id);
         return ps;
     }
+
     @Override
     public String getAsString(FacesContext fc, UIComponent uic, Object t) {
         BusSeats ps=(BusSeats)t;
@@ -40,5 +34,4 @@ public class BusSeatConverter implements Converter{
     public void setPsDao(BusSeatsDAO psDao) {
         this.psDao = psDao;
     }
-    
 }

@@ -67,8 +67,8 @@ public class Company {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + Objects.hashCode(this.company_id);
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.company_id);
         return hash;
     }
 

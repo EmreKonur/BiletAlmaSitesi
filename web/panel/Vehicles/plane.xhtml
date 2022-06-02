@@ -40,31 +40,26 @@
             background:#FFE87C;/*Renk Değişecek Unutma*/
         }
         </STYLE>
-        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
     </h:head>
     <h:body>
         <h:form>
-            <h:commandButton styleClass="btn btn-light" action="/index" value="Home" />
+            <h:commandButton action="/index" value="Home" />
         </h:form>
         <hr/>          
         <h:form>
-            Company Name <h:selectOneMenu value="#{planeBean.entity.company}" converter="companyConverter">
+            Company ID <h:selectOneMenu value="#{companyBean.entity.company_id}" converter="companyConverter">
             <f:selectItems value="#{companyBean.list}" var="u" itemValue="#{u}" itemLabel="#{u.company_name}"/>
             </h:selectOneMenu><br/>
-            Available Seats <h:selectOneMenu value="#{planeBean.entity.planeseats}" converter="planeseatsConverter">
-            <f:selectItems value="#{planeseatsBean.list}" var="u" itemValue="#{u}" itemLabel="#{u.available_seat}"/>
-            </h:selectOneMenu><br/>
-            Travel Route <h:selectOneMenu value="#{planeBean.entity.planeTravelRoute}" converter="planetravelrouteConverter">
-            <f:selectItems value="#{planetravelrouteBean.list}" var="u" itemValue="#{u}" itemLabel="#{u.travel_route_id}"/>
-            </h:selectOneMenu><br/>
+                
+            
             <h:outputText rendered="#{planeBean.entity.plane_id==NULL}" value="Plane ID" />
             <h:inputText rendered="#{planeBean.entity.plane_id==NULL}" value="#{planeBean.entity.plane_id}"/><br/>
             <h:outputText rendered="#{planeBean.entity.plane_id!=NULL}" value="Company_id" /> 
             <h:inputText readonly="True" rendered="#{planeBean.entity.plane_id!=NULL}"  value="#{planeBean.entity.plane_id}"/>
       
-            <h:commandButton styleClass="btn btn-light" rendered="#{planeBean.entity.plane_id==NULL}" action="#{planeBean.create}" value="Create"/>
-            <h:commandButton styleClass="btn btn-light" rendered="#{planeBean.entity.plane_id!=NULL}" action="#{planeBean.update}" value="Update"/>
-            <h:commandButton styleClass="btn btn-light" rendered="#{planeBean.entity.plane_id!=NULL}" action="#{planeBean.clear}" value="Clear Form"/>
+            <h:commandButton rendered="#{planeBean.entity.plane_id==NULL}" action="#{planeBean.create}" value="Create"/>
+            <h:commandButton rendered="#{planeBean.entity.plane_id!=NULL}" action="#{planeBean.update}" value="Update"/>
+            <h:commandButton rendered="#{planeBean.entity.plane_id!=NULL}" action="#{planeBean.clear}" value="Clear Form"/>
         </h:form>
         <br/>
         <h:form>
@@ -74,26 +69,14 @@
                         #{u.plane_id}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">Company Name</f:facet>
-                        #{u.company.name}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Travel Route To</f:facet>
-                        #{u.planeTravelRoute.to}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Travel Route From</f:facet>
-                        #{u.planeTravelRoute.from}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Available Seats</f:facet>
-                        #{u.planeseats.available_seat}
+                    <f:facet name="header">Company ID</f:facet>
+                        #{companyBean.getCompany_name(entity.company_id)}
                 </h:column>
                 
                 <h:column>
                     <f:facet name="header">Admin</f:facet>
-                    <h:commandButton styleClass="btn btn-light" action="#{planeBean.delete(u)}" value="Delete"/>
-                    <h:commandButton styleClass="btn btn-light" action="#{planeBean.setEntity(u)}" value="Update"/>
+                    <h:commandButton action="#{planeBean.delete(u)}" value="Delete"/>
+                    <h:commandButton action="#{planeBean.setEntity(u)}" value="Update"/>
                 </h:column>
             </h:dataTable>
         </h:form>
